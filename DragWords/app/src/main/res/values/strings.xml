@@ -6,5 +6,7 @@
     <string name="btnStartText">Start</string>
     <string name="tvEnterUsername">Your name:</string>
     <string name="defaultFont">monospace</string>
+    <string name="title_activity_input_word">InputWord</string>
+    <string name="btnAdd">Add</string>
 
 </resources>

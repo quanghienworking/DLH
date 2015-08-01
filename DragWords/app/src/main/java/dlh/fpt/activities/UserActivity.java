@@ -2,6 +2,7 @@ package dlh.fpt.activities;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -38,8 +39,11 @@ public class UserActivity extends Activity implements View.OnClickListener {
             boolean check = dbUser.addUser(user);
             if (check = true) {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString("name", edtUsername.getText().toString().trim());
+                editor.putString("userid", String.valueOf(user.hashCode()));
+                editor.putString("username", edtUsername.getText().toString().trim());
                 editor.commit();
+                Intent intent = new Intent(this, InputWordActivity.class);
+                startActivity(intent);
             }
         }
     }
