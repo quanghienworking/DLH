@@ -57,7 +57,7 @@ public class DatabaseUserHandler extends SQLiteOpenHelper {
 
     public boolean checkUser(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String sql = "select * from " + TABLE_USER  + " where " + USER_NAME + " = " + username;
+        String sql = "select * from " + TABLE_USER  + " where " + USER_NAME + " = '" + username + "'";
         Cursor cursor = db.rawQuery(sql, null);
         if (cursor.getCount() != 0) {
             return true;
