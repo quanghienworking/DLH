@@ -31,6 +31,10 @@
             android:name=".activities.InputWordActivity"
             android:label="@string/title_activity_input_word" >
         </activity>
+        <activity
+            android:name=".activities.PlayActivity"
+            android:label="@string/title_activity_play" >
+        </activity>
     </application>
 
 </manifest>
