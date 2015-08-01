@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,11 +8,20 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context=".MainActivity">
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.30"
+        android:orientation="vertical"
+        android:padding="10dp"></View>
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.70"
         android:orientation="vertical"
         android:padding="10dp">
 
@@ -25,21 +34,20 @@
             android:textSize="@dimen/tvEnterUsername" />
 
         <EditText
-            android:layout_marginTop="10dp"
             android:id="@+id/edtUsername"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:imeOptions="actionGo"
-            android:singleLine="true"
-            />
+            android:singleLine="true" />
 
         <Button
-            android:layout_marginTop="10dp"
             android:id="@+id/btnStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/btnStart"/>
+            android:layout_marginTop="10dp"
+            android:text="@string/btnStart" />
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>
