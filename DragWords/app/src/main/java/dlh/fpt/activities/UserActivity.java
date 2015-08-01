@@ -1,12 +1,15 @@
 package dlh.fpt.activities;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import dlh.fpt.R;
 
@@ -19,16 +22,26 @@ import dlh.fpt.database.DatabaseUserHandler;
 public class UserActivity extends Activity implements View.OnClickListener{
     EditText edtUsername;
     Button btnStart;
-   DatabaseUserHandler dbUser;
+    DatabaseUserHandler dbUser;
+    SharedPreferences sharedPreferences;
 
     @Override
     public void onClick(View v) {
         User user = new User();
-        String name = edtUsername.getText().toString();
-        user.setName(name);
-        user.setUserID(user.hashCode());
+        String name = edtUsername.getText().toString().trim();
+        if (name.length() == 0) {
+            Toast.makeText(this, "Please enter your name", Toast.LENGTH_LONG).show();
+        }else {
+            user.setName(name);
+            user.setUserID(user.hashCode());
+            boolean check = dbUser.addUser(user);
+            if (check = true) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("name" , edtUsername.getText().toString().trim());
+                editor.commit();
+            }
+        }
 
-        dbUser.addUser(user);
     }
 
     @Override
@@ -41,6 +54,9 @@ public class UserActivity extends Activity implements View.OnClickListener{
         dbUser = new DatabaseUserHandler(this);
         btnStart = (Button) findViewById(R.id.btnStart);
         edtUsername = (EditText) findViewById(R.id.edtUsername);
+        sharedPreferences = getSharedPreferences("USER_INFO", Context.MODE_PRIVATE);
         btnStart.setOnClickListener(this);
+
+
     }
 }
