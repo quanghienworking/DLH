@@ -50,5 +50,6 @@ public class DatabaseUserHandler extends SQLiteOpenHelper {
 
     public boolean checkUser(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
+        return false;
     }
 }
