@@ -60,7 +60,8 @@ public class UserActivity extends Activity implements View.OnClickListener {
                 boolean check = dbUser.addUser(user);
                 if (check = true) {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("name", edtUsername.getText().toString().trim());
+                    editor.putString("userid", String.valueOf(user.hashCode()));
+                    editor.putString("username", edtUsername.getText().toString().trim());
                     editor.commit();
                 }
                 Intent intent = new Intent(this, InputWordActivity.class);
