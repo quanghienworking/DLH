@@ -1,4 +1,4 @@
-package dragwords.fpt.dlh.database;
+package dlh.fpt.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
-import dragwords.fpt.dlh.entities.User;
+import dlh.fpt.entities.User;
 
 /**
  * Created by Daniel on 8/1/2015.

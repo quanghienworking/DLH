@@ -1,12 +1,11 @@
-package dragwords.fpt.dlh.dragwords;
+package dlh.fpt.activities;
 
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
-import android.widget.TextView;
+
+import dlh.fpt.R;
 
 public class MainActivity extends AppCompatActivity {
 

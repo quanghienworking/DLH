@@ -1,4 +1,4 @@
-package dragwords.fpt.dlh.dragwords;
+package dlh.fpt.activities;
 
 import android.app.Activity;
 import android.graphics.Typeface;
@@ -8,8 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import dragwords.fpt.dlh.database.DatabaseUserHandler;
-import dragwords.fpt.dlh.entities.User;
+import dlh.fpt.R;
+import dlh.fpt.database.DatabaseUserHandler;
+import dlh.fpt.entities.User;
 
 /**
  * Created by Daniel on 8/1/2015.

@@ -1,4 +1,4 @@
-package dragwords.fpt.dlh.dragwords;
+package dlh.fpt.activities;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

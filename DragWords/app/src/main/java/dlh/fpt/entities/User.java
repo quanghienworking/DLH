@@ -1,4 +1,4 @@
-package dragwords.fpt.dlh.entities;
+package dlh.fpt.entities;
 
 /**
  * Created by Daniel on 8/1/2015.

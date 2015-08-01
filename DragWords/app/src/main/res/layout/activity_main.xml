@@ -16,7 +16,7 @@
         android:orientation="vertical"
         android:padding="10dp">
 
-        <dragwords.fpt.dlh.custom.RobotoTextView
+        <dlh.fpt.custom.RobotoTextView
             android:id="@+id/tvEnterUsername"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
