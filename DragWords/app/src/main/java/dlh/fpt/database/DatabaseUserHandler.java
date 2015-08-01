@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 import dlh.fpt.entities.User;
+import dlh.fpt.entities.Word;
 
 
 /**
@@ -15,10 +16,16 @@ import dlh.fpt.entities.User;
  */
 public class DatabaseUserHandler extends SQLiteOpenHelper {
     private static String DATABASE_NAME = "DLH";
+    //table user
     private static int DATABASE_VERSION = 1;
     public static String TABLE_USER = "User";
     public static String USER_ID = "userID";
     public static String USER_NAME = "name";
+    //table word
+    public static String TABLE_WORDS = "Words";
+    public static String WORD_ID = "wordID";
+    public static String WORD_WORD = "word";
+    public static String WORD_USERID = "userID";
     Context context;
 
     public DatabaseUserHandler(Context context) {
@@ -28,14 +35,20 @@ public class DatabaseUserHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String table = "create table " + TABLE_USER + " ( " + USER_ID +" Integer primary key, " + USER_NAME + " text "+ ")";
-        db.execSQL(table);
+        String tableUser = "create table " + TABLE_USER + " ( " + USER_ID +" Integer primary key, " + USER_NAME + " text "+ ")";
+        String tableWord = "create table " + TABLE_WORDS + " ( " +
+                WORD_ID +" Integer primary key, " +
+                WORD_WORD + " text, "+ WORD_USERID + " Integer " + ")";
+        db.execSQL(tableUser);
+        db.execSQL(tableWord);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String sql = "drop table if exists " + TABLE_USER;
-        db.execSQL(sql);
+        String sqlUser = "drop table if exists " + TABLE_USER;
+        String sqlWord = "drop table if exists " + TABLE_WORDS;
+        db.execSQL(sqlUser);
+        db.execSQL(sqlWord);
         onCreate(db);
     }
 
@@ -58,6 +71,31 @@ public class DatabaseUserHandler extends SQLiteOpenHelper {
     public boolean checkUser(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
         String sql = "select * from " + TABLE_USER  + " where " + USER_NAME + " = '" + username + "'";
+        Cursor cursor = db.rawQuery(sql, null);
+        if (cursor.getCount() != 0) {
+            return true;
+        }else
+            return false;
+    }
+
+    //table Word
+    public boolean addWord(Word word) {
+        boolean check = false;
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues value = new ContentValues();
+        value.put(WORD_ID, word.getWordID());
+        value.put(WORD_WORD, word.getWord());
+        value.put(WORD_USERID, word.getUserID());
+        if (db.insert(TABLE_WORDS, null, value) != -1) {
+            check = true;
+        }
+        db.close();
+        return check;
+    }
+
+    public boolean checkExistWork(String word) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "select * from " + TABLE_WORDS  + " where " + WORD_WORD + " = '" + word + "'";
         Cursor cursor = db.rawQuery(sql, null);
         if (cursor.getCount() != 0) {
             return true;

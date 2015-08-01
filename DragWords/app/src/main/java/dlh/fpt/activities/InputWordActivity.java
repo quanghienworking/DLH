@@ -1,7 +1,8 @@
 package dlh.fpt.activities;
 
 import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.text.Spanned;
@@ -23,21 +24,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dlh.fpt.R;
+import dlh.fpt.database.DatabaseUserHandler;
+import dlh.fpt.database.DatabaseWordHandler;
+import dlh.fpt.entities.Word;
 
-public class InputWordActivity extends Activity {
+public class InputWordActivity extends Activity  {
 
     private List<String> wordList;
     private EditText edtWord;
     private Button btnAdd;
+
     private Button btnOK;
     private ListView lv;
     private View footerView;
+    DatabaseUserHandler db;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_word);
 
+        sharedPreferences = getSharedPreferences("USER_INFO", Context.MODE_PRIVATE);
         btnAdd = (Button) findViewById(R.id.btnAdd);
         lv = (ListView) findViewById(R.id.listWords);
         edtWord = (EditText) findViewById(R.id.edtWord);
@@ -80,6 +88,23 @@ public class InputWordActivity extends Activity {
             }
         };
         edtWord.setFilters(new InputFilter[]{filter});
+        db = new DatabaseUserHandler(this);
+        btnOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                for (int i = 0; i < wordList.size(); i++) {
+                    Log.d("DAT", wordList.size() + "");
+                    if (!db.checkExistWork(wordList.get(i))) {
+                        Word w = new Word();
+                        w.setWord(wordList.get(i));
+                        w.setWordID(w.hashCode());
+                        w.setUserID(Integer.parseInt(sharedPreferences.getString("userid", "")));
+                        db.addWord(w);
+                    }
+                }
+            }
+        });
     }
 
 
