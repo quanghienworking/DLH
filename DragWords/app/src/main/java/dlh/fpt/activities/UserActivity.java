@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +20,7 @@ import dlh.fpt.utils.FontsOverride;
 /**
  * Created by Daniel on 8/1/2015.
  */
-public class UserActivity extends Activity implements View.OnClickListener{
+public class UserActivity extends Activity implements View.OnClickListener {
     EditText edtUsername;
     Button btnStart;
     DatabaseUserHandler dbUser;
@@ -30,17 +32,16 @@ public class UserActivity extends Activity implements View.OnClickListener{
         String name = edtUsername.getText().toString().trim();
         if (name.length() == 0) {
             Toast.makeText(this, "Please enter your name", Toast.LENGTH_LONG).show();
-        }else {
+        } else {
             user.setName(name);
             user.setUserID(user.hashCode());
             boolean check = dbUser.addUser(user);
             if (check = true) {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString("name" , edtUsername.getText().toString().trim());
+                editor.putString("name", edtUsername.getText().toString().trim());
                 editor.commit();
             }
         }
-
     }
 
     @Override
@@ -55,7 +56,5 @@ public class UserActivity extends Activity implements View.OnClickListener{
         edtUsername = (EditText) findViewById(R.id.edtUsername);
         sharedPreferences = getSharedPreferences("USER_INFO", Context.MODE_PRIVATE);
         btnStart.setOnClickListener(this);
-
-
     }
 }

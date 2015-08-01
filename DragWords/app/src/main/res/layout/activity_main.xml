@@ -31,7 +31,8 @@
             android:padding="10dp"
             android:layout_height="wrap_content"
             android:background="@android:color/white"
-            android:imeOptions="actionDone"
+            android:imeOptions="actionGo"
+            android:singleLine="true"
             />
 
         <Button
