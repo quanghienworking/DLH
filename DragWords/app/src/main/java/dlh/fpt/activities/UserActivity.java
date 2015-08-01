@@ -55,6 +55,13 @@ public class UserActivity extends Activity implements View.OnClickListener {
                         dialog.cancel();
                     }
                 });
+                tvYes.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(UserActivity.this, InputWordActivity.class);
+                        startActivity(intent);
+                    }
+                });
                 dialog.show();
             }else {
                 boolean check = dbUser.addUser(user);
