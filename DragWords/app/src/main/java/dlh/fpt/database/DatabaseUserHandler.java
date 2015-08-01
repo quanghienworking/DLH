@@ -2,11 +2,13 @@ package dlh.fpt.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 import dlh.fpt.entities.User;
+
 
 /**
  * Created by Daniel on 8/1/2015.
@@ -37,19 +39,29 @@ public class DatabaseUserHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void addUser(User user) {
+    public boolean addUser(User user) {
+        boolean check = false;
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(USER_ID, user.getUserID());
         contentValues.put(USER_NAME, user.getName());
         if(db.insert(TABLE_USER, null, contentValues) != -1) {
             Toast.makeText(context, "Add sucess", Toast.LENGTH_LONG).show();
-        }else Toast.makeText(context, "Add failed", Toast.LENGTH_LONG).show();
+            check = true;
+        }else{
+            Toast.makeText(context, "Add failed", Toast.LENGTH_LONG).show();
+        }
         db.close();
+        return check;
     }
 
     public boolean checkUser(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
-        return false;
+        String sql = "select * from " + TABLE_USER  + " where " + USER_NAME + " = " + username;
+        Cursor cursor = db.rawQuery(sql, null);
+        if (cursor.getCount() != 0) {
+            return true;
+        }else
+            return false;
     }
 }
