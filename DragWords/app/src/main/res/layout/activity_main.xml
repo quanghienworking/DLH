@@ -16,7 +16,7 @@
         android:orientation="vertical"
         android:padding="10dp">
 
-        <TextView
+        <dragwords.fpt.dlh.custom.RobotoTextView
             android:id="@+id/tvEnterUsername"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -38,7 +38,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/btnStartText" />
+            android:text="@string/btnStartText"
+            android:typeface="sans"/>
     </LinearLayout>
 
 </RelativeLayout>
