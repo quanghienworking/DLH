@@ -4,4 +4,5 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="usernameTextBoxFontSize">16dp</dimen>
     <dimen name="usernameTextBoxHeight">100dp</dimen>
+    <dimen name="tvEnterUsername">30dp</dimen>
 </resources>

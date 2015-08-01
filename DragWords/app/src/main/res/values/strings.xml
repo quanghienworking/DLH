@@ -4,5 +4,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="btnStartText">Start</string>
+    <string name="tvEnterUsername">Your name:</string>
 
 </resources>
