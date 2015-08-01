@@ -20,8 +20,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight=".80"
-            android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-            android:inputType="text" />
+            />
 
         <Button
             android:id="@+id/btnAdd"
@@ -32,15 +31,21 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="horizontal">
+        android:layout_height="fill_parent">
+    <ListView
+        android:id="@+id/listWords"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="50dp"/>
 
-        <ListView
-            android:id="@+id/listWords"
+        <Button
+            android:id="@+id/btnOK"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" />
+            android:layout_height="50dp"
+            android:text="@string/btnOK"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
 
-    </LinearLayout>
 </LinearLayout>

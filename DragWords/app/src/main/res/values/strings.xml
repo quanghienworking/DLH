@@ -3,10 +3,12 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="btnStartText">Start</string>
-    <string name="tvEnterUsername">Your name:</string>
+    <string name="btnStart">Let's GO</string>
+    <string name="tvEnterUsername">Your name</string>
     <string name="defaultFont">monospace</string>
     <string name="title_activity_input_word">InputWord</string>
     <string name="btnAdd">Add</string>
+    <string name="btnOK">OK</string>
+    <string name="btnFooter">Load more</string>
 
 </resources>

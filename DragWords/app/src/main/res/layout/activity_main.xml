@@ -16,21 +16,19 @@
         android:orientation="vertical"
         android:padding="10dp">
 
-        <TextView
+        <dlh.fpt.custom.RobotoTextView
             android:id="@+id/tvEnterUsername"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
             android:text="@string/tvEnterUsername"
             android:textColor="@android:color/white"
             android:textSize="@dimen/tvEnterUsername" />
 
         <EditText
+            android:layout_marginTop="10dp"
             android:id="@+id/edtUsername"
             android:layout_width="fill_parent"
-            android:padding="10dp"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
             android:imeOptions="actionGo"
             android:singleLine="true"
             />
@@ -41,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/btnStartText"/>
+            android:text="@string/btnStart"/>
     </LinearLayout>
 
 </RelativeLayout>

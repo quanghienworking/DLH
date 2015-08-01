@@ -31,7 +31,7 @@ public class RobotoTextView extends TextView {
 
     private void changeFont() {
         if (!isInEditMode()) {
-            setTypeface(FontCache.getFont(getContext(), "fonts/robotolight.ttf"));
+            setTypeface(FontCache.getFont(getContext(), "fonts/robotothin.ttf"));
         }
     }
 
