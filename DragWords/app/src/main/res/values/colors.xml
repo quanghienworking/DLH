@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="mainBackground">#499ea7</color>
+    <color name="mainBackground">#b2dfdb</color>
     <color name="actionBar">#499ea7</color>
     <color name="blue">#4392fc</color>
-    <color name="primary">#e3f2fd</color>
-    <color name="primary_dark">#90caf9</color>
-    <color name="accent">#90caf9</color>
+    <color name="primary">#00796b</color>
+    <color name="primary_dark">#004d40</color>
+    <color name="accent">#80cbc4</color>
 </resources>
