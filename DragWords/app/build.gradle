@@ -5,8 +5,8 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "dragwords.fpt.dlh.dragwords"
-        minSdkVersion 15
+        applicationId "dlh.fpt.dragwords"
+        minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
