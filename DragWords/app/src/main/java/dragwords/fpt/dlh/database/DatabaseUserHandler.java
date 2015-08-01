@@ -47,4 +47,8 @@ public class DatabaseUserHandler extends SQLiteOpenHelper {
         }else Toast.makeText(context, "Add failed", Toast.LENGTH_LONG).show();
         db.close();
     }
+
+    public boolean checkUser(String username) {
+        SQLiteDatabase db = this.getReadableDatabase();
+    }
 }
