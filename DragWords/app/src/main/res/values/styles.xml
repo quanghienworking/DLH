@@ -4,9 +4,6 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:typeface">monospace</item>
-        <item name="colorControlNormal">@color/accent_material_dark</item>
-        <item name="colorControlActivated">@color/accent_material_light</item>
-        <item name="colorControlHighlight">@color/accent_material_light</item>
     </style>
 
 </resources>

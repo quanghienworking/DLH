@@ -5,4 +5,6 @@
     <dimen name="usernameTextBoxFontSize">16dp</dimen>
     <dimen name="usernameTextBoxHeight">100dp</dimen>
     <dimen name="tvEnterUsername">40dp</dimen>
+    <dimen name="fivedp">5dp</dimen>
+    <dimen name="tendp">10dp</dimen>
 </resources>

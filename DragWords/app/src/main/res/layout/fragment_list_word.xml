@@ -2,11 +2,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:layout_margin="10dp"
+    android:paddingTop="@dimen/tendp"
+    android:paddingBottom="@dimen/tendp"
+    android:paddingLeft="@dimen/fivedp"
+    android:paddingRight="@dimen/tendp"
+    android:background="@color/viewPagerBackground"
     tools:context="dlh.fpt.fragments.ListWordFragment">
 
-
     <ListView
+        android:background="@android:color/white"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/listAllWords" />

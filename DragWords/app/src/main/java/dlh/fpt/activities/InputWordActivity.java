@@ -72,12 +72,10 @@ public class InputWordActivity extends Activity implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnOK:
-                Toast.makeText(InputWordActivity.this, "btnOK", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(InputWordActivity.this, PlayActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btnAdd:
-                Toast.makeText(InputWordActivity.this, "btnADD", Toast.LENGTH_SHORT).show();
                 String word = edtWord.getText().toString().trim();
                 if (word.length() > 0) {
                     if (!wordList.contains(word)) {

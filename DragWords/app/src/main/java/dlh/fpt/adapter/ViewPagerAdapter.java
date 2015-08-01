@@ -15,7 +15,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     final int PAGE_COUNT = 2;
     // Tab Titles
-    private String tabtitles[] = new String[] { "Tab1", "Tab2"};
+    private String tabtitles[] = new String[] { "Play With Words", "Word History"};
     Context context;
 
     public ViewPagerAdapter(FragmentManager fm) {

@@ -3,10 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@android:color/white"
+    android:paddingTop="@dimen/tendp"
+    android:paddingBottom="@dimen/tendp"
+    android:paddingLeft="@dimen/tendp"
+    android:paddingRight="@dimen/fivedp"
+    android:background="@color/viewPagerBackground"
     tools:context="dlh.fpt.fragments.DragAndDropFragment">
 
     <LinearLayout
+    android:background="@android:color/white"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="0.50">
@@ -20,6 +25,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:background="@android:color/white"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="0.50"></LinearLayout>
