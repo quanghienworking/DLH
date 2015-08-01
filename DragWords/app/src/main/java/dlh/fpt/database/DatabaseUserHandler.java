@@ -39,15 +39,20 @@ public class DatabaseUserHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void addUser(User user) {
+    public boolean addUser(User user) {
+        boolean check = false;
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(USER_ID, user.getUserID());
         contentValues.put(USER_NAME, user.getName());
         if(db.insert(TABLE_USER, null, contentValues) != -1) {
             Toast.makeText(context, "Add sucess", Toast.LENGTH_LONG).show();
-        }else Toast.makeText(context, "Add failed", Toast.LENGTH_LONG).show();
+            check = true;
+        }else{
+            Toast.makeText(context, "Add failed", Toast.LENGTH_LONG).show();
+        }
         db.close();
+        return check;
     }
 
     public boolean checkUser(String username) {
