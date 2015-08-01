@@ -1,6 +1,7 @@
 package dlh.fpt.activities;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
@@ -8,8 +9,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import dlh.fpt.R;
@@ -25,6 +28,7 @@ public class UserActivity extends Activity implements View.OnClickListener {
     Button btnStart;
     DatabaseUserHandler dbUser;
     SharedPreferences sharedPreferences;
+    Dialog dialog;
 
     @Override
     public void onClick(View v) {
@@ -35,11 +39,29 @@ public class UserActivity extends Activity implements View.OnClickListener {
         } else {
             user.setName(name);
             user.setUserID(user.hashCode());
-            boolean check = dbUser.addUser(user);
-            if (check = true) {
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString("name", edtUsername.getText().toString().trim());
-                editor.commit();
+            //search user
+            boolean checkExisted = dbUser.checkUser(name);
+            if (checkExisted) {
+                dialog = new Dialog(this);
+                //delete title of popup
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.dialog_check_user);
+                TextView tvYes = (TextView) dialog.findViewById(R.id.btnYes);
+                TextView tvNo = (TextView) dialog.findViewById(R.id.btnNo);
+                tvNo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.cancel();
+                    }
+                });
+                dialog.show();
+            }else {
+                boolean check = dbUser.addUser(user);
+                if (check = true) {
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("name", edtUsername.getText().toString().trim());
+                    editor.commit();
+                }
             }
         }
     }
