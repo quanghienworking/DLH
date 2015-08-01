@@ -4,4 +4,7 @@
     <color name="mainBackground">#499ea7</color>
     <color name="actionBar">#499ea7</color>
     <color name="blue">#4392fc</color>
+    <color name="primary">#e3f2fd</color>
+    <color name="primary_dark">#90caf9</color>
+    <color name="accent">#90caf9</color>
 </resources>

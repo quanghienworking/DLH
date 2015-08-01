@@ -1,6 +1,7 @@
 package dlh.fpt.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputFilter;
@@ -24,8 +25,9 @@ import java.util.List;
 
 import dlh.fpt.R;
 
-public class InputWordActivity extends Activity {
+public class InputWordActivity extends Activity implements View.OnClickListener {
 
+    private ArrayAdapter<String> adapter;
     private List<String> wordList;
     private EditText edtWord;
     private Button btnAdd;
@@ -39,34 +41,18 @@ public class InputWordActivity extends Activity {
         setContentView(R.layout.activity_input_word);
 
         btnAdd = (Button) findViewById(R.id.btnAdd);
+        btnAdd.setOnClickListener(this);
         lv = (ListView) findViewById(R.id.listWords);
         edtWord = (EditText) findViewById(R.id.edtWord);
         btnOK = (Button) findViewById(R.id.btnOK);
+        btnOK.setOnClickListener(this);
 //        footerView = getLayoutInflater().inflate(R.layout.listview_footer, null);
 
         wordList = new ArrayList<String>();
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>
+        adapter = new ArrayAdapter<String>
                 (InputWordActivity.this, android.R.layout.simple_list_item_1, wordList);
 //        lv.addFooterView(footerView);
         lv.setAdapter(adapter);
-
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String word = edtWord.getText().toString().trim();
-                if (word.length() > 0) {
-                    if (!wordList.contains(word)) {
-                        wordList.add(wordList.size(), word);
-                        adapter.notifyDataSetChanged();
-                        edtWord.setText("");
-                    } else {
-                        Toast.makeText(InputWordActivity.this, "Duplicated word.", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(InputWordActivity.this, "Please enter the word again.", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
 
         InputFilter filter = new InputFilter() {
             public CharSequence filter(CharSequence source, int start, int end,
@@ -82,5 +68,30 @@ public class InputWordActivity extends Activity {
         edtWord.setFilters(new InputFilter[]{filter});
     }
 
-
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btnOK:
+                Toast.makeText(InputWordActivity.this, "btnOK", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(InputWordActivity.this, PlayActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btnAdd:
+                Toast.makeText(InputWordActivity.this, "btnADD", Toast.LENGTH_SHORT).show();
+                String word = edtWord.getText().toString().trim();
+                if (word.length() > 0) {
+                    if (!wordList.contains(word)) {
+                        wordList.add(wordList.size(), word);
+                        adapter.notifyDataSetChanged();
+                        edtWord.setText("");
+                    } else {
+                        Toast.makeText(InputWordActivity.this, "Duplicated word.", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(InputWordActivity.this, "Invalid word.", Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
+    }
 }
+

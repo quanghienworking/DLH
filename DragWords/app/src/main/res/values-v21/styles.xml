@@ -4,6 +4,12 @@
     <style name="AppTheme" parent="@android:style/Theme.Material.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:fontFamily">@string/defaultFont</item>
+        <item name="android:colorPrimary">@color/primary</item>
+        <!--   darker variant for the status bar and contextual app bars -->
+        <item name="android:colorPrimaryDark">@color/primary_dark</item>
+        <!--   theme UI controls like checkboxes and text fields -->
+        <item name="android:colorAccent">@color/accent</item>
+
     </style>
 
 </resources>

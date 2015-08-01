@@ -19,6 +19,7 @@
             android:id="@+id/edtWord"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:singleLine="true"
             android:layout_weight=".80"
             />
 
