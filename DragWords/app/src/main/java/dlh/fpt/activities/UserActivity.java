@@ -9,8 +9,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import dlh.fpt.R;
-import dlh.fpt.database.DatabaseUserHandler;
+
 import dlh.fpt.entities.User;
+import dlh.fpt.database.DatabaseUserHandler;
 
 /**
  * Created by Daniel on 8/1/2015.
@@ -18,7 +19,7 @@ import dlh.fpt.entities.User;
 public class UserActivity extends Activity implements View.OnClickListener{
     EditText edtUsername;
     Button btnStart;
-    DatabaseUserHandler dbUser;
+   DatabaseUserHandler dbUser;
 
     @Override
     public void onClick(View v) {

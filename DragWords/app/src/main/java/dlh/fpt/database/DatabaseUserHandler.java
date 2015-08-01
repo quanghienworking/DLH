@@ -2,11 +2,13 @@ package dlh.fpt.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 import dlh.fpt.entities.User;
+
 
 /**
  * Created by Daniel on 8/1/2015.
@@ -50,6 +52,11 @@ public class DatabaseUserHandler extends SQLiteOpenHelper {
 
     public boolean checkUser(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
-        return false;
+        String sql = "select * from " + TABLE_USER  + " where " + USER_NAME + " = " + username;
+        Cursor cursor = db.rawQuery(sql, null);
+        if (cursor.getCount() != 0) {
+            return true;
+        }else
+            return false;
     }
 }
