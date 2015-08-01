@@ -5,6 +5,8 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
+import dlh.fpt.utils.FontCache;
+
 /**
  * Created by LOIBV on 8/1/2015.
  */
@@ -14,23 +16,22 @@ public class RobotoTextView extends TextView {
 
     public RobotoTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        init();
+        changeFont();
     }
 
     public RobotoTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
+        changeFont();
     }
 
     public RobotoTextView(Context context) {
         super(context);
-        init();
+        changeFont();
     }
 
-    private void init() {
+    private void changeFont() {
         if (!isInEditMode()) {
-            Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/robotolight.ttf");
-            setTypeface(tf);
+            setTypeface(FontCache.getFont(getContext(), "fonts/robotolight.ttf"));
         }
     }
 
