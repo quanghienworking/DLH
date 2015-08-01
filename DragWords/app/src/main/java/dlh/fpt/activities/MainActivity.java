@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import dlh.fpt.R;
+import dlh.fpt.utils.FontsOverride;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,7 +14,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//ads
     }
 
     @Override
