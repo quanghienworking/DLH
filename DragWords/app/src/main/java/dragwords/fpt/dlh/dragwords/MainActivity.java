@@ -15,9 +15,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/robotolight.ttf");
-        TextView tv = (TextView) findViewById(R.id.tvEnterUsername);
-        tv.setTypeface(custom_font);
+
     }
 
     @Override
