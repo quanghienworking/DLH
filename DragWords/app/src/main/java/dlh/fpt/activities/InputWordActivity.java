@@ -1,29 +1,26 @@
 package dlh.fpt.activities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import dlh.fpt.R;
+import dlh.fpt.database.DatabaseHandler;
+import dlh.fpt.entities.Word;
 
 public class InputWordActivity extends Activity implements View.OnClickListener {
 
@@ -31,15 +28,19 @@ public class InputWordActivity extends Activity implements View.OnClickListener 
     private List<String> wordList;
     private EditText edtWord;
     private Button btnAdd;
+
     private Button btnOK;
     private ListView lv;
     private View footerView;
+    DatabaseHandler db;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_word);
 
+        sharedPreferences = getSharedPreferences("USER_INFO", Context.MODE_PRIVATE);
         btnAdd = (Button) findViewById(R.id.btnAdd);
         btnAdd.setOnClickListener(this);
         lv = (ListView) findViewById(R.id.listWords);
@@ -66,12 +67,24 @@ public class InputWordActivity extends Activity implements View.OnClickListener 
             }
         };
         edtWord.setFilters(new InputFilter[]{filter});
+        db = new DatabaseHandler(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnOK:
+                for (int i = 0; i < wordList.size(); i++) {
+                    Log.d("DAT", wordList.size() + "");
+                    if (!db.checkExistWork(wordList.get(i))) {
+                        Word w = new Word();
+                        w.setWord(wordList.get(i));
+                        w.setWordID(w.hashCode());
+                        w.setUserID(Integer.parseInt(sharedPreferences.getString("userid", "")));
+                        db.addWord(w);
+                    }
+                }
+                Toast.makeText(InputWordActivity.this, "btnOK", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(InputWordActivity.this, PlayActivity.class);
                 startActivity(intent);
                 break;
