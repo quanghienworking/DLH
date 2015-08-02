@@ -31,21 +31,25 @@ public class WordUtils {
      * */
 
     public static  List<String> checkMeanWord(String word){
-        List<String> result = new ArrayList<String>();
+        List<String> result = null;
         ObjectParseDictionary dictionary = ConnectAPI(word);
-        List<NodeMean> listMean = dictionary.getDefinitions();
-        for(NodeMean meanPair : listMean){
-            String[] means = meanPair.getText().split(":");
-            if(means.length >1){
-                String mean = means[0] + ".";
-                result.add(mean);
-            }else {
-                String mean = means[0];
-                result.add(mean);
-            }
+        if( dictionary != null){
+            result = new ArrayList<String>();
+            List<NodeMean> listMean = dictionary.getDefinitions();
+            for(NodeMean meanPair : listMean){
+                String[] means = meanPair.getText().split(":");
+                if(means.length >1){
+                    String mean = means[0] + ".";
+                    result.add(mean);
+                }else {
+                    String mean = means[0];
+                    result.add(mean);
+                }
 
+            }
+            System.out.println("checkMeanWord | RESULT:" + result);
         }
-        System.out.println("checkMeanWord | RESULT:" + result);
+
         return result;
     }
 
@@ -66,7 +70,7 @@ public class WordUtils {
         for(String word : listWord){
             word = word.toUpperCase();
             char[] letters = word.toCharArray();
-            for(char c: letters){
+            for(char c : letters){
                 listInt[c - 'A'] = 1;
             }
         }
