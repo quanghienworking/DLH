@@ -5,10 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -17,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import dlh.fpt.R;
-import dlh.fpt.database.DatabaseUserHandler;
+import dlh.fpt.database.DatabaseHandler;
 import dlh.fpt.entities.User;
 import dlh.fpt.utils.FontsOverride;
 
@@ -27,7 +24,7 @@ import dlh.fpt.utils.FontsOverride;
 public class UserActivity extends Activity implements View.OnClickListener {
     EditText edtUsername;
     Button btnStart;
-    DatabaseUserHandler dbUser;
+    DatabaseHandler dbUser;
     SharedPreferences sharedPreferences;
     Dialog dialog;
 
@@ -84,7 +81,7 @@ public class UserActivity extends Activity implements View.OnClickListener {
         FontsOverride.setDefaultFont(this, "MONOSPACE", "fonts/robotolight.ttf");
         FontsOverride.setDefaultFont(this, "SANS_SERIF", "fonts/robotolight.ttf");
         setContentView(R.layout.activity_main);
-        dbUser = new DatabaseUserHandler(this);
+        dbUser = new DatabaseHandler(this);
         btnStart = (Button) findViewById(R.id.btnStart);
         edtUsername = (EditText) findViewById(R.id.edtUsername);
         sharedPreferences = getSharedPreferences("USER_INFO", Context.MODE_PRIVATE);

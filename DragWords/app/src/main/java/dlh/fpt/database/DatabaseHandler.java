@@ -14,7 +14,7 @@ import dlh.fpt.entities.Word;
 /**
  * Created by Daniel on 8/1/2015.
  */
-public class DatabaseUserHandler extends SQLiteOpenHelper {
+public class DatabaseHandler extends SQLiteOpenHelper {
     private static String DATABASE_NAME = "DLH";
     //table user
     private static int DATABASE_VERSION = 1;
@@ -28,7 +28,7 @@ public class DatabaseUserHandler extends SQLiteOpenHelper {
     public static String WORD_USERID = "userID";
     Context context;
 
-    public DatabaseUserHandler(Context context) {
+    public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
     }
